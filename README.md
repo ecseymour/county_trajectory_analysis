@@ -26,6 +26,7 @@ df.loc[ (df['ppctchg'] >= 0) & (df['nbr_avg_ppctchg'] < 0), 'category'] = 'C'
 df.loc[ (df['ppctchg'] >= 0) & (df['nbr_avg_ppctchg'] >= 0), 'category'] = 'D'
 ```   
 
+* For most counties I found neighbors using the shapefile with the geometries clipped to the coastlines. This is to make sure Michigan is not a neighbor of Illinois. For a small number of coastal counties, however, I used the shapefile of counties that is not clipped to the coastline to identify the nearest neighbors. These include counties in MA and WA. Their FIPS codes are '25019', '25007', '53055'.
 * Each county then has a sequence of each of these four states for each decade from 1950-1960 to 2000-2010. I then created a typology of sequences using the `TraMineR` package in R. This is the same package used by Elizabeth Delmelle for the paper, "Mapping the DNA of Urban Neighborhoods." __NOTE: I created separate typologies for counties that lost population and those that gained population 2000-2010. This necessarily privileges the most recent period in grouping counties__. 
 * To cluster states using the `TraMineR` package we must first create a state sequence object from the input data using `seqdef`
 * We then need to create a substitution matrix and assign insert/deletion costs. These are the costs we wish to impose for changing a state in a given sequence in order to render that sequence identical to another. For this we use `seqcost`.
