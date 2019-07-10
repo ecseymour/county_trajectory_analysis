@@ -12,6 +12,10 @@ __NOTE:__ `init_db.sh` is the **first** script that needs to be run to rebuild t
 
 The other file in the `scripts/create_database` reads historical county population data into the database.
 
+## Dependencies
+
+Python 2.7 plus several non-standard libraries. I have included the yml file `geo_env.yml` containing the complete [Conda](https://conda.io/en/latest/) environment I used when compiling the Python scripts in this project. I clustered the data in R using several packages list at the top of the `.R` file in `create_typology`.
+
 ## Typology
 
 The typology workflow consists of the following stages:
